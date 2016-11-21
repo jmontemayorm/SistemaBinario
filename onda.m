@@ -1,21 +1,21 @@
 %----------------------------------------------------------------------%
 % Esta función junta todas la funciones que describen la onda gravitacional
-%en una sola. En ella se invoca a la amplitud de la onda, su frecuencia y
-%fase también.
+% en una sola. En ella se invoca a la amplitud de la onda, su frecuencia y
+% fase también.
 %----------------------------------------------------------------------%
-function[h, p, f, Ap, Ac]=onda(t, masa1, masa2, tc, ang, f0)
+function [h, p, f, Ap, Ac] = onda(t, masa1, masa2, tc, ang, f0)
 %----------------------------------------------------------------------%
-%Distancia en metros del observador a el sistema.
-%Se invoca a la fase, la amplitud y la resultante de los componentes de 
-%de la onda.
+% Distancia en metros del observador al sistema.
+% Se invoca a la fase, la amplitud y la resultante de los componentes de 
+% de la onda.
 %----------------------------------------------------------------------%
   D = 1.0;  
   p = fase(t, masa1, masa2, tc);
-  [Ap,Ac,f] = amplitud(t, masa1, masa2, tc, ang, D);
+  [Ap, Ac, f] = amplitud(t, masa1, masa2, tc, ang, D);
   h = Ap.*cos(p) + Ac.*sin(p);
 %----------------------------------------------------------------------%
 % Se cortan todos los resultados obtenidos para tiempos posteriores a 
-%la colisión de los hoyos negros por perdidas de energía.
+% la colisión de los hoyos negros por perdidas de energía.
 %----------------------------------------------------------------------%
   h(t >= tc) = 0;
   p(t >= tc) = 0;
@@ -24,8 +24,8 @@ function[h, p, f, Ap, Ac]=onda(t, masa1, masa2, tc, ang, f0)
   Ac(t >= tc) = 0;
 %----------------------------------------------------------------------%
 % Se cortan todas las frecuencias menores a la frecuencia de muestra, ya
-%que esas frecuencias son imposibles de detectar. Al final se normaliza
-%los valores de la onda resultante.
+% que esas frecuencias son imposibles de detectar. Al final se normaliza
+% los valores de la onda resultante.
 %----------------------------------------------------------------------%
   h(f < f0) = 0;
   p(f < f0) = 0;
