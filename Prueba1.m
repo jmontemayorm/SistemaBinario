@@ -1,7 +1,7 @@
 %-----------------------EJEMPLO DE PRUEBA------------------------------%
 %El siguiente código simula la evolución de un sistema binario de agujeros
 %negros de schwarzschild, desde sus condiciones iniciales hasta su colpaso
-%Se gráfica el potencial del sistema, la evolución de la onda y la frecuencia.
+%Se gráfica la fase del sistema, la evolución de la onda y la frecuencia.
 %Autores:
 %Javier Montemayor Mancías - A01196276
 %Diego Rubén Machain Rivera - A01232074
@@ -30,7 +30,7 @@ dt = 1/fremu;
 N = floor(fremu*tc);   
 t = [0:N-1].'*dt;      
 %----------------------------------------------------------------------%
-%En las siguientes líneas se grafica el potencial de la onda gravitacional
+%En las siguientes líneas se grafica la fase de la onda gravitacional
 %producida por el movimiento brusco de grandes cantitades de masa.Esto
 %debido al movimiento de atracción de los agujeros
 %----------------------------------------------------------------------%
@@ -39,7 +39,7 @@ figure;
 plot(t, p);
 axis tight
 xlabel('Time (sec)');
-ylabel('Potencial');
+ylabel('Fase');
 title('Onda Gravitacional');
 %----------------------------------------------------------------------%
 %Evolución de la frecuencua de la onda gravitacional en función del 
@@ -62,5 +62,5 @@ ylabel('Onda Gravitacional');
 %----------------------------------------------------------------------%
 figure;
 Nfft = 512;
-spectrogram(h, Nfft, fremu, Nfft/2);
+specgram(h, Nfft, fremu, Nfft/2);
 %----------------------------------------------------------------------%
