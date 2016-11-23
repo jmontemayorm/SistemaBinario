@@ -1,16 +1,16 @@
 %----------------------------------------------------------------------%
 % Esta función junta todas la funciones que describen la onda gravitacional
 % en una sola. En ella se invoca a la amplitud de la onda, su frecuencia y
-% fase también.
+% potencial también.
 %----------------------------------------------------------------------%
 function [h, p, f, Ap, Ac] = onda(t, masa1, masa2, tc, ang, f0)
 %----------------------------------------------------------------------%
 % Distancia en metros del observador al sistema.
-% Se invoca a la fase, la amplitud y la resultante de los componentes de 
+% Se invoca al potencial, la amplitud y la resultante de los componentes de 
 % de la onda.
 %----------------------------------------------------------------------%
   D = 1.0;  
-  p = fase(t, masa1, masa2, tc);
+  p = potencial(t, masa1, masa2, tc);
   [Ap, Ac, f] = amplitud(t, masa1, masa2, tc, ang, D);
   h = Ap.*cos(p) + Ac.*sin(p);
 %----------------------------------------------------------------------%
